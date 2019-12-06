@@ -18,6 +18,8 @@
 
     <modules>
         <module>myblog-dependencies</module>
+        <module>myblog-domain</module>
+        <module>myblog-admin</module>
     </modules>
 
 
