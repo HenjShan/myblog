@@ -1,11 +1,11 @@
 package com.hanshan.myblog.domain.mapper;
 
 import com.hanshan.myblog.domain.entity.Admin;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
+@Mapper
 public interface AdminMapper {
 
     //----------------------------------------------------增------------------------------------------------------------
@@ -28,4 +28,7 @@ public interface AdminMapper {
     //----------------------------------------------------查------------------------------------------------------------
     @Select("select * from blog_admin where admin_id=#{id}")
     public Admin findAdminById(Long id);
+
+    @Select("select * from blog_admin")
+    public List<Admin> findAll();
 }
