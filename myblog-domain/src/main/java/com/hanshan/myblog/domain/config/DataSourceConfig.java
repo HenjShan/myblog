@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.activation.DataSource;
 
-@Configuration
+//@Configuration
 public class DataSourceConfig {
 
     @Bean
