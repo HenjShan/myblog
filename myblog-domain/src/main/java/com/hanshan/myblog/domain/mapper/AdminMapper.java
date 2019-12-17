@@ -31,4 +31,9 @@ public interface AdminMapper {
 
     @Select("select * from blog_admin")
     public List<Admin> findAll();
+
+    @Select("select * from blog_admin where admin_account=#{adminAccount} and admin_password=#{adminPassword}")
+    public Admin findAdminByAccountAndPassword(String adminAccount,String adminPassword);
+
+    public List<Admin> selectByExample();
 }

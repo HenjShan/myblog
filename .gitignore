@@ -29,3 +29,10 @@ hs_err_pid*
 
 # IDE
 .idea
+
+# Image File
+*.png
+
+# Html Model
+myblog-admin/src/main/resources/static/dist
+myblog-admin/src/main/resources/static/plugins

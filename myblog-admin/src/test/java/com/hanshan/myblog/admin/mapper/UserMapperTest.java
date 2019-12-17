@@ -7,6 +7,8 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.annotation.Commit;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,9 +21,11 @@ public class UserMapperTest {
     private UserMapper userMapper;
 
     @Test
+    @Transactional
+    @Commit
     public void adduser(){
         User user = new User();
-        user.setUserAccount("092215208");
+        user.setUserAccount("092215210");
         user.setUserPassword("123456");
         userMapper.addUser(user);
     }

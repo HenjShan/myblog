@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"com.hanshan.myblog.domain.config"})
+@ComponentScan(basePackages = {"com.hanshan.myblog"})
 @MapperScan({"com.hanshan.myblog.domain.mapper"})
 public class MyblogAdmin {
     public static void main(String[] args) {
