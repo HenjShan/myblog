@@ -1,4 +1,4 @@
-package com.hanshan.myblog.domain.example.entity;
+package com.hanshan.myblog.domain.generator.entity;
 
 import java.util.ArrayList;
 import java.util.List;

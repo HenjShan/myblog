@@ -1,21 +1,20 @@
 package com.hanshan.myblog.admin.controller;
 
+import com.hanshan.myblog.admin.commons.ResponseData;
+import com.hanshan.myblog.admin.commons.StatusCodeUtils;
+import com.hanshan.myblog.admin.commons.TransitionEntityType;
 import com.hanshan.myblog.admin.service.AdminService;
 import com.hanshan.myblog.admin.service.LoginService;
-import com.hanshan.myblog.domain.entity.Admin;
-import com.hanshan.myblog.domain.mapper.AdminMapper;
+import com.hanshan.myblog.domain.generator.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class LoginController {
@@ -26,35 +25,40 @@ public class LoginController {
     @Autowired
     private AdminService adminService;
 
-    @GetMapping(value = "login")
-    public String loginPage(){
-        return "login";
-    }
+    @Autowired
+    private HttpServletRequest request;
+
+//    @GetMapping(value = "login")
+//    public String login(){
+//        return "login";
+//    }
 
     @GetMapping(value = "manager")
-    public ModelAndView managerPage(
+    public ModelAndView manager(
             ModelAndView modelAndView
     ){
         modelAndView.setViewName("manager");
         return modelAndView;
     }
 
-    @RequestMapping(value = "login",method = RequestMethod.POST)
-    public ModelAndView login(
-            HttpServletRequest request,
-            ModelAndView modelAndView,
+    @PostMapping(value = "/login")
+    @ResponseBody
+    public Map<String,Object> login(
             @RequestParam("account") String account,
             @RequestParam("password") String password
     ){
+        ResponseData result = new ResponseData();
+        HttpSession session = request.getSession();
         Admin admin = loginService.login(account, password);
         if (admin != null){
-            HttpSession session = request.getSession();
             session.setAttribute("adminAccount",admin.getAdminAccount());
             session.setAttribute("adminId",admin.getAdminId());
-            modelAndView.setViewName("redirect:/manager");
-            return modelAndView;
+            result.setCode(StatusCodeUtils.LOGIN_SUCCESS.getCode());
+            result.setMsg(StatusCodeUtils.LOGIN_SUCCESS.getMsg());
+        }else{
+            result.setCode(StatusCodeUtils.LOGIN_DEFEAT.getCode());
+            result.setMsg(StatusCodeUtils.LOGIN_DEFEAT.getMsg());
         }
-        modelAndView.setViewName("redirect:/login");
-        return modelAndView;
+        return TransitionEntityType.transitionEntityToHashMap(result);
     }
 }

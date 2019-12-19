@@ -1,7 +1,7 @@
-package com.hanshan.myblog.domain.example.mapper;
+package com.hanshan.myblog.domain.generator.mapper;
 
-import com.hanshan.myblog.domain.example.entity.Article;
-import com.hanshan.myblog.domain.example.entity.ArticleExample;
+import com.hanshan.myblog.domain.generator.entity.Article;
+import com.hanshan.myblog.domain.generator.entity.ArticleExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -51,7 +51,7 @@ public interface ArticleMapper {
         "from blog_article",
         "where article_id = #{articleId,jdbcType=BIGINT}"
     })
-    @ResultMap("com.hanshan.myblog.domain.example.mapper.ArticleMapper.ResultMapWithBLOBs")
+    @ResultMap("com.hanshan.myblog.domain.generator.mapper.ArticleMapper.ResultMapWithBLOBs")
     Article selectByPrimaryKey(Long articleId);
 
     int updateByExampleSelective(@Param("record") Article record, @Param("example") ArticleExample example);

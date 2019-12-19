@@ -1,4 +1,4 @@
-package com.hanshan.myblog.domain.example.entity;
+package com.hanshan.myblog.domain.generator.entity;
 
 import java.io.Serializable;
 import java.util.Date;

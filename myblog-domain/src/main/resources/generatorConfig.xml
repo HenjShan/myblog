@@ -32,7 +32,7 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.hanshan.myblog.domain.example.entity" targetProject="myblog-domain/src/main/java">
+        <javaModelGenerator targetPackage="com.hanshan.myblog.domain.generator.entity" targetProject="myblog-domain/src/main/java">
             <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
             <property name="enableSubPackages" value="true"/>
 
@@ -45,14 +45,49 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="com.hanshan.myblog.domain.example.mapper" targetProject="myblog-domain/src/main/java" type="MIXEDMAPPER">
+        <javaClientGenerator targetPackage="com.hanshan.myblog.domain.generator.mapper" targetProject="myblog-domain/src/main/java" type="MIXEDMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <table tableName="blog_admin" domainObjectName="Admin"
-               enableSelectByExample="true">
-        </table>
+               enableSelectByExample="true"
+               enableCountByExample="true"
+               enableDeleteByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableInsert="true"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableUpdateByPrimaryKey="true"
+        />
         <table tableName="blog_article" domainObjectName="Article"
-               enableSelectByExample="true"/>
+               enableSelectByExample="true"
+               enableCountByExample="true"
+               enableDeleteByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableInsert="true"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableUpdateByPrimaryKey="true"
+        />
+        <table tableName="blog_user" domainObjectName="User"
+               enableSelectByExample="true"
+               enableCountByExample="true"
+               enableDeleteByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableInsert="true"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableUpdateByPrimaryKey="true"
+        />
+        <table tableName="blog_comment" domainObjectName="Comment"
+               enableSelectByExample="true"
+               enableCountByExample="true"
+               enableDeleteByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableInsert="true"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableUpdateByPrimaryKey="true"
+        />
     </context>
 </generatorConfiguration>

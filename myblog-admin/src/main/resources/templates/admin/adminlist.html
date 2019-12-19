@@ -150,8 +150,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr th:each="admin,state:${adminList}">
+          <tr th:each="admin,state:${adminPageInfo.getList()}">
             <td th:text="${state.index+1}"></td>
+            <!--/*@thymesVar id="getAdminId" type="com.hanshan.myblog.domain.generator.entity.Admin"*/-->
             <td th:text="${admin.getAdminId()}"></td>
             <td th:text="${admin.getAdminAccount()}"></td>
             <td th:text="${admin.getAdminPassword()}"></td>

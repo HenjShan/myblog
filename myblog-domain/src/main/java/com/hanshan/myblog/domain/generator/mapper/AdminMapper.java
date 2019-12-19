@@ -1,7 +1,7 @@
-package com.hanshan.myblog.domain.example.mapper;
+package com.hanshan.myblog.domain.generator.mapper;
 
-import com.hanshan.myblog.domain.example.entity.Admin;
-import com.hanshan.myblog.domain.example.entity.AdminExample;
+import com.hanshan.myblog.domain.generator.entity.Admin;
+import com.hanshan.myblog.domain.generator.entity.AdminExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -42,7 +42,7 @@ public interface AdminMapper {
         "from blog_admin",
         "where admin_id = #{adminId,jdbcType=BIGINT}"
     })
-    @ResultMap("com.hanshan.myblog.domain.example.mapper.AdminMapper.BaseResultMap")
+    @ResultMap("com.hanshan.myblog.domain.generator.mapper.AdminMapper.BaseResultMap")
     Admin selectByPrimaryKey(Long adminId);
 
     int updateByExampleSelective(@Param("record") Admin record, @Param("example") AdminExample example);
